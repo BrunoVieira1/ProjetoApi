@@ -1,5 +1,6 @@
 import "./output.css";
 import "./index.css";
+import "./App.css";
 
 import Navigation from "./components/navigation";
 

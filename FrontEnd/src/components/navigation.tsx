@@ -1,16 +1,21 @@
 import "../output.css";
 import "../index.css";
 import "../styles/navigation.css";
-import Logo from "../assets/logo.jpg";
-import AbcIcon from "@mui/icons-material/Abc";
+import { renderDisplay } from "./mostrarTelas";
 
+import Content from "./content";
+import FadeMenu from "./menu";
+import Logo from "../assets/logo.jpg";
+
+import HomeIcon from "@mui/icons-material/Home";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import WestIcon from "@mui/icons-material/West";
-import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import BadgeIcon from "@mui/icons-material/Badge";
 
-function handleMenu() {
+function handMenu() {
   var nameBtns = document.querySelectorAll(".name-btn");
   var drawer = document.querySelectorAll(".drawer");
+  var menuBtn = document.querySelectorAll(".menu-btn");
 
   nameBtns.forEach((btn) => {
     btn.classList.toggle("name-btn-visible");
@@ -19,14 +24,18 @@ function handleMenu() {
   drawer.forEach((btn) => {
     btn.classList.toggle("drawer-extend");
   });
+
+  menuBtn.forEach((btn) => {
+    btn.classList.toggle("menuBtn-extend");
+  });
 }
 
 function Navigation() {
   return (
     <>
-      <div className="nav bg-azul-2 p-3">
+      <div className="nav bg-azul-2 ">
         <div className="nav-alt">
-          <button onClick={handleMenu} className="menu-btn">
+          <button onClick={handMenu} className="menu-btn">
             <div className="container-img rounded-xl">
               <img src={Logo} alt="" className="logo-nav" />
             </div>
@@ -36,24 +45,38 @@ function Navigation() {
         </div>
 
         <div className="adm-btn">
-          <AdminPanelSettingsIcon />
-          <span>Administrador</span>
+          <FadeMenu />
         </div>
       </div>
+
       <div className="content-body">
         <div className="drawer">
-          <span className="btn-drawer">
+          <button onClick={() => renderDisplay(1)} className="btn-drawer">
+            <HomeIcon />
+            <span className="name-btn">Início</span>
+          </button>
+          <button onClick={() => renderDisplay(2)} className="btn-drawer">
             <InventoryIcon />
             <span className="name-btn">Produtos</span>
-          </span>
-          <span className="btn-drawer">
+          </button>
+          <button className="btn-drawer">
             <WestIcon id="WestIcon-r" />
             <span className="name-btn">Entrada de Produtos</span>
-          </span>
-          <span className="btn-drawer">
+          </button>
+          <button className="btn-drawer">
             <WestIcon id="WestIcon-l" />
             <span className="name-btn">Saida de Produtos</span>
-          </span>
+          </button>
+          <button className="btn-drawer">
+            <BadgeIcon />
+            <span className="name-btn">Funcionários</span>
+          </button>
+        </div>
+        <div className="content all">
+          <Content />
+        </div>
+        <div className="teste all">
+          <h1>TESTE</h1>
         </div>
       </div>
     </>
