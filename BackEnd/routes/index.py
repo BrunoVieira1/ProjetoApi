@@ -1,4 +1,4 @@
-from produto_routes import produtos
+from routes.produto_routes import produtos
 
 def default_routes(app):
   produtos(app)
