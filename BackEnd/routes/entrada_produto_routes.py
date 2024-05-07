@@ -1,4 +1,4 @@
-from controllers.entradaProdutoController import entradaProduto_controller
+from controllers.entradaProdutoController import entrada_produto_controller
 
 def entradaProdutos(app):
-  app.route('/entradaProdutos', methods=['POST','GET', 'PUT', 'DELETE'])(entradaProduto_controller)
+  app.route('/entradaProdutos', methods=['POST','GET', 'PUT', 'DELETE'])(entrada_produto_controller)
