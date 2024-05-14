@@ -1,0 +1,22 @@
+.modal {
+  text-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.placeInput:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background-color: #70b842;
+  padding: 4px;
+  border-radius: 4px;
+  width: 30%;
+}

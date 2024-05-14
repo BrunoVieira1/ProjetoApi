@@ -1,6 +1,7 @@
 import "../styles/content.css";
 import { fecharTela } from "./mostrarTelas";
 import CloseIcon from "@mui/icons-material/Close";
+import { ModalAdd } from "./modalAddUser";
 
 function Content() {
   return (
@@ -17,7 +18,11 @@ function Content() {
               textTransform: "uppercase",
             }}
           />
+          <span className="btn-add">
+            <ModalAdd />
+          </span>
         </div>
+
         <span
           style={{ padding: "4px" }}
           className="CloseIcon"
