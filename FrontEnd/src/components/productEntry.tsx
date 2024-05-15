@@ -1,14 +1,13 @@
-import "../styles/content.css";
-import { fecharTela } from "./mostrarTelas";
+import { fecharTela } from "./showScreens";
 import CloseIcon from "@mui/icons-material/Close";
 import { ModalAdd } from "./modalAddUser";
 
-function Content() {
+function ProductEntry() {
   return (
     <>
       <div className="nav-content">
         <div className="flex ">
-          <h2>PRODUTOS </h2>
+          <h2>ENTRADA DE PRODUTOS </h2>
           <input
             type="text"
             placeholder="Buscar por nome:"
@@ -31,16 +30,18 @@ function Content() {
           <CloseIcon />
         </span>
       </div>
+
       <div className="container">
         <div className="product-span">
           <span className="product">ID</span>
-          <span className="product">NOME</span>
+          <span className="product">ID-PRODUTO</span>
           <span className="product">QUANTIDADE</span>
-          <span className="product">PREÇO</span>
+          <span className="product">VALOR UNITÁRIO</span>
+          <span className="product">DATA DE ENTRADA</span>
         </div>
       </div>
     </>
   );
 }
 
-export default Content;
+export default ProductEntry;

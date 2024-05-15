@@ -6,6 +6,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Input } from "@mui/material";
 import "../styles/modalAdd.css";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -22,14 +23,17 @@ const addCircle = {
   color: "#70B842",
 };
 
-type Produto = {
-  nome: string;
-};
-
-export function ModalAdd({ nome }: Produto) {
+export function ModalAdd() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [nome, setNome] = useState<string>("");
+  const [marca, setMarca] = useState<string>("");
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNome(event.target.value);
+    setMarca(event.target.value);
+  };
 
   return (
     <div>
@@ -45,8 +49,18 @@ export function ModalAdd({ nome }: Produto) {
       >
         <Box className="modal" sx={style}>
           <h2>Cadastrar Produto</h2>
-          <Input className="placeInput" placeholder="Nome" value={nome} />
-          <Input className="placeInput" placeholder="Marca" />
+          <Input
+            className="placeInput"
+            placeholder="Nome"
+            value={nome}
+            onChange={handleChange}
+          />
+          <Input
+            className="placeInput"
+            placeholder="Marca"
+            value={marca}
+            onChange={handleChange}
+          />
           <Input className="placeInput" placeholder="Descrição" />
           <button className="add-btn">
             <AddBoxIcon style={{ color: "white" }} />

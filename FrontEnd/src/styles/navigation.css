@@ -45,7 +45,6 @@
 
 .content-body {
   display: flex;
-  width: 100%;
   flex-grow: 1;
   background-color: #ffffff;
 }
@@ -99,7 +98,12 @@
   display: none;
 }
 
-.content {
+.productScreen {
+  margin: 0.5px 0 0 3px;
+  flex-grow: 1;
+}
+
+.productEntry {
   margin: 0.5px 0 0 3px;
   flex-grow: 1;
 }

@@ -1,9 +1,11 @@
 import "../output.css";
 import "../index.css";
 import "../styles/navigation.css";
-import { renderDisplay } from "./mostrarTelas";
+import { renderDisplay } from "./showScreens";
 
-import Content from "./content";
+import Content from "./product";
+import ProductEntry from "./productEntry";
+import ProductOutput from "./productOutput";
 import FadeMenu from "./menu";
 import Logo from "../assets/logo.jpg";
 
@@ -59,7 +61,7 @@ function Navigation() {
             <InventoryIcon />
             <span className="name-btn">Produtos</span>
           </button>
-          <button className="btn-drawer">
+          <button onClick={() => renderDisplay(3)} className="btn-drawer">
             <WestIcon id="WestIcon-r" />
             <span className="name-btn">Entrada de Produtos</span>
           </button>
@@ -72,11 +74,17 @@ function Navigation() {
             <span className="name-btn">Funcionários</span>
           </button>
         </div>
-        <div className="content all">
-          <Content />
-        </div>
         <div className="teste all">
           <h1>TESTE</h1>
+        </div>
+        <div className="productScreen all">
+          <Content />
+        </div>
+        <div className="productEntry all">
+          <ProductEntry />
+        </div>
+        <div className="productOutput all">
+          <ProductOutput />
         </div>
       </div>
     </>
