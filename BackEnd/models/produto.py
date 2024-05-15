@@ -9,7 +9,11 @@ class Produto(db.Model):
     }
   
   id = db.Column(db.Integer, primary_key = True)
+  nome = db.Column(db.String(100))
+  marca = db.Column(db.String(100))
   descricao = db.Column(db.String(100))
 
-  def __init__(self, descricao):
+  def __init__(self,nome, marca, descricao):
+    self.nome = nome
+    self.marca = marca
     self.descricao = descricao

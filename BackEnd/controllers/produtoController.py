@@ -7,6 +7,8 @@ def produto_controller():
     try:
       data = request.get_json()
       print(data)
+      product = Produto(data['nome'])
+      product = Produto(data['marca'])
       product = Produto(data['descricao'])
       db.session.add(product)
       db.session.commit()
@@ -26,6 +28,8 @@ def produto_controller():
       put_produto = Produto.query.get(put_produto_id)
       if put_produto is None:
         return {'error': 'Produto nao encontrado'}, 404
+      put_produto.nome = data.get('nome', put_produto.nome)
+      put_produto.marca = data.get('marca', put_produto.marca)
       put_produto.descricao = data.get('descricao', put_produto.descricao)
       db.session.commit()
       return 'cliente atualizado com sucesso', 200
