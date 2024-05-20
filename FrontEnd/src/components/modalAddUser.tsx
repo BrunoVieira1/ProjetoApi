@@ -23,7 +23,7 @@ const addCircle = {
   color: "#70B842",
 };
 
-export function ModalAdd() {
+function ModalAdd() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -70,3 +70,5 @@ export function ModalAdd() {
     </div>
   );
 }
+
+export default 

@@ -1,18 +1,11 @@
-import "../output.css";
-import "../index.css";
+import "../styles/output.css";
+import "../styles/index.css";
 import "../styles/navigation.css";
-import { renderDisplay } from "./showScreens";
 
-import Content from "./product";
-import ProductEntry from "./productEntry";
-import ProductOutput from "./productOutput";
+import { ContentScreen } from "./contentsScreen";
+import { Drawer } from "./drawer";
 import FadeMenu from "./menu";
 import Logo from "../assets/logo.jpg";
-
-import HomeIcon from "@mui/icons-material/Home";
-import InventoryIcon from "@mui/icons-material/Inventory";
-import WestIcon from "@mui/icons-material/West";
-import BadgeIcon from "@mui/icons-material/Badge";
 
 function handMenu() {
   var nameBtns = document.querySelectorAll(".name-btn");
@@ -52,40 +45,8 @@ function Navigation() {
       </div>
 
       <div className="content-body">
-        <div className="drawer">
-          <button onClick={() => renderDisplay(1)} className="btn-drawer">
-            <HomeIcon />
-            <span className="name-btn">Início</span>
-          </button>
-          <button onClick={() => renderDisplay(2)} className="btn-drawer">
-            <InventoryIcon />
-            <span className="name-btn">Produtos</span>
-          </button>
-          <button onClick={() => renderDisplay(3)} className="btn-drawer">
-            <WestIcon id="WestIcon-r" />
-            <span className="name-btn">Entrada de Produtos</span>
-          </button>
-          <button className="btn-drawer">
-            <WestIcon id="WestIcon-l" />
-            <span className="name-btn">Saida de Produtos</span>
-          </button>
-          <button className="btn-drawer">
-            <BadgeIcon />
-            <span className="name-btn">Funcionários</span>
-          </button>
-        </div>
-        <div className="teste all">
-          <h1>TESTE</h1>
-        </div>
-        <div className="productScreen all">
-          <Content />
-        </div>
-        <div className="productEntry all">
-          <ProductEntry />
-        </div>
-        <div className="productOutput all">
-          <ProductOutput />
-        </div>
+        <Drawer />
+        <ContentScreen />
       </div>
     </>
   );

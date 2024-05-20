@@ -98,16 +98,8 @@
   display: none;
 }
 
-.productScreen {
-  margin: 0.5px 0 0 3px;
-  flex-grow: 1;
-}
-
-.productEntry {
-  margin: 0.5px 0 0 3px;
-  flex-grow: 1;
-}
-
 .all {
   display: none;
+  margin: 0.5px 0 0 3px;
+  flex-grow: 1;
 }

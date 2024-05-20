@@ -1,6 +1,4 @@
-import { fecharTela } from "./showScreens";
-import CloseIcon from "@mui/icons-material/Close";
-import { ModalAdd } from "./modalAddUser";
+import { ModalAdd } from "../components/modalAddUser";
 
 function ProductEntry() {
   return (
@@ -21,14 +19,6 @@ function ProductEntry() {
             <ModalAdd />
           </span>
         </div>
-
-        <span
-          style={{ padding: "4px" }}
-          className="CloseIcon"
-          onClick={() => fecharTela("content")}
-        >
-          <CloseIcon />
-        </span>
       </div>
 
       <div className="container">

@@ -1,14 +1,13 @@
-import "../styles/product.css";
-import { fecharTela } from "./showScreens";
-import CloseIcon from "@mui/icons-material/Close";
-import { ModalAdd } from "./modalAddUser";
+/* import { fecharTela } from "../showScreens"; */
+import CloseScreen from "../button/closeScreen";
+import { ModalAdd } from "../components/modalAddUser";
 
-function Product() {
+function ProductOutput() {
   return (
     <>
       <div className="nav-content">
         <div className="flex ">
-          <h2>PRODUTOS </h2>
+          <h2>SAÍDA DE PRODUTOS </h2>
           <input
             type="text"
             placeholder="Buscar por nome:"
@@ -22,26 +21,20 @@ function Product() {
             <ModalAdd />
           </span>
         </div>
-
-        <span
-          style={{ padding: "4px" }}
-          className="CloseIcon"
-          onClick={() => fecharTela("content")}
-        >
-          <CloseIcon />
-        </span>
+        <CloseIcon />
       </div>
 
       <div className="container">
         <div className="product-span">
           <span className="product">ID</span>
-          <span className="product">NOME</span>
-          <span className="product">MARCA</span>
-          <span className="product">DESCRIÇÃO</span>
+          <span className="product">ID-PRODUTO</span>
+          <span className="product">QUANTIDADE</span>
+          <span className="product">VALOR UNITÁRIO</span>
+          <span className="product">DATA DE SAÍDA</span>
         </div>
       </div>
     </>
   );
 }
 
-export default Product;
+export default ProductOutput;
