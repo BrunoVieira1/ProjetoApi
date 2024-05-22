@@ -98,8 +98,3 @@
   display: none;
 }
 
-.all {
-  display: none;
-  margin: 0.5px 0 0 3px;
-  flex-grow: 1;
-}

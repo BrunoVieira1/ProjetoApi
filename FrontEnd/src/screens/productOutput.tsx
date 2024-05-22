@@ -1,13 +1,13 @@
 /* import { fecharTela } from "../showScreens"; */
 import CloseScreen from "../button/closeScreen";
-import { ModalAdd } from "../components/modalAddUser";
+import ModalAdd from "../components/modalAdd";
+import { ModalFunction } from "../components/modalFunction";
 
 function ProductOutput() {
   return (
     <>
       <div className="nav-content">
         <div className="flex ">
-          <h2>SAÍDA DE PRODUTOS </h2>
           <input
             type="text"
             placeholder="Buscar por nome:"
@@ -17,11 +17,12 @@ function ProductOutput() {
               textTransform: "uppercase",
             }}
           />
-          <span className="btn-add">
+          <h2>SAÍDA DE PRODUTOS </h2>
+          <button onClick={() => ModalFunction(3)} className="btn-add">
             <ModalAdd />
-          </span>
+          </button>
         </div>
-        <CloseIcon />
+        <CloseScreen />
       </div>
 
       <div className="container">

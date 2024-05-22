@@ -6,11 +6,17 @@
   flex-direction: column;
 }
 
-.placeInput:not(:last-child) {
+.placeInput {
   margin-bottom: 20px;
+}
+Input::placeholder{
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .modal h2 {
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 

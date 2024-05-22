@@ -2,7 +2,7 @@ import CloseScreen from "../button/closeScreen";
 import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
 
-function ProductEntry() {
+function Functionary() {
   return (
     <>
       <div className="nav-content">
@@ -16,8 +16,8 @@ function ProductEntry() {
               textTransform: "uppercase",
             }}
           />
-          <h2>ENTRADA DE PRODUTOS </h2>
-          <button onClick={() => ModalFunction(2)} className="btn-add">
+          <h2>FUNCIONÁRIOS </h2>
+          <button onClick={() => ModalFunction(4)} className="btn-add">
             <ModalAdd />
           </button>
         </div>
@@ -27,14 +27,14 @@ function ProductEntry() {
       <div className="container">
         <div className="product-span">
           <span className="product">ID</span>
-          <span className="product">ID-PRODUTO</span>
-          <span className="product">QUANTIDADE</span>
-          <span className="product">VALOR UNITÁRIO</span>
-          <span className="product">DATA DE ENTRADA</span>
+          <span className="product">NOME</span>
+          <span className="product">CPF</span>
+          <span className="product">CARGO</span>
+          <span className="product">SENHA</span>
         </div>
       </div>
     </>
   );
 }
 
-export default ProductEntry;
+export default Functionary;

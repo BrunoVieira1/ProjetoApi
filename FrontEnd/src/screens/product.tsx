@@ -1,13 +1,13 @@
 import "../styles/screens.css";
 import CloseScreen from "../button/closeScreen";
-import ModalAdd from "../components/modalAddUser";
+import ModalAdd from "../components/modalAdd";
+import { ModalFunction } from "../components/modalFunction";
 
 function Product() {
   return (
     <>
       <div className="nav-content">
         <div className="flex ">
-          <h2>PRODUTOS </h2>
           <input
             type="text"
             placeholder="Buscar por nome:"
@@ -17,9 +17,10 @@ function Product() {
               textTransform: "uppercase",
             }}
           />
-          <span className="btn-add">
+          <h2>PRODUTOS </h2>
+          <button onClick={() => ModalFunction(1)} className="btn-add">
             <ModalAdd />
-          </span>
+          </button>
         </div>
 
         <CloseScreen />
@@ -31,6 +32,12 @@ function Product() {
           <span className="product">NOME</span>
           <span className="product">MARCA</span>
           <span className="product">DESCRIÇÃO</span>
+        </div>
+        <div className="product-span ">
+          <span className="product pro">1</span>
+          <span className="product pro">ÁGUA</span>
+          <span className="product pro">CRYSTAL</span>
+          <span className="product pro">SEM GÁS</span>
         </div>
       </div>
     </>

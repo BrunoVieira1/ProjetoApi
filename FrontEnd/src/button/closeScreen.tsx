@@ -7,7 +7,7 @@ function CloseScreen() {
       <span
         style={{ padding: "4px" }}
         className="CloseIcon"
-        onClick={() => renderDisplay(0, true)}
+        onClick={() => renderDisplay(1)}
       >
         <CloseIcon />
       </span>

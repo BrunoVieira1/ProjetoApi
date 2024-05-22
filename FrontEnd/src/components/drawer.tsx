@@ -23,7 +23,7 @@ function Drawer() {
           <WestIcon id="WestIcon-l" />
           <span className="name-btn">Saida de Produtos</span>
         </button>
-        <button className="btn-drawer">
+        <button onClick={() => renderDisplay(5)} className="btn-drawer">
           <BadgeIcon />
           <span className="name-btn">Funcionários</span>
         </button>

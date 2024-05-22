@@ -2,12 +2,12 @@ import "../styles/output.css";
 import "../styles/index.css";
 import "../styles/App.css";
 
-import Navigation from "../components/navigation";
+import RoutesApp from "../routes/index";
 
 function App() {
   return (
     <>
-      <Navigation />
+      <RoutesApp />
     </>
   );
 }

@@ -1,7 +1,13 @@
-import "./navigation";
+import "./contentsScreen";
 
-export function renderDisplay(screenClass: number, closeScreen: boolean) {
-  const classes = ["teste", "productScreen", "productEntry", "productOutput"];
+export function renderDisplay(screenClass: number) {
+  const classes = [
+    "teste",
+    "productScreen",
+    "productEntry",
+    "productOutput",
+    "functionary",
+  ];
   const pegarClasse = classes[screenClass - 1];
 
   // Primeiro, ocultar todos os elementos
@@ -18,13 +24,6 @@ export function renderDisplay(screenClass: number, closeScreen: boolean) {
     const elementos = document.getElementsByClassName(pegarClasse);
     for (let i = 0; i < elementos.length; i++) {
       (elementos[i] as HTMLElement).style.display = "block";
-    }
-  }
-
-  if (closeScreen == true) {
-    const elementos = document.getElementsByClassName(pegarClasse);
-    for (let i = 0; i < elementos.length; i++) {
-      (elementos[i] as HTMLElement).style.display = "none";
     }
   }
 }

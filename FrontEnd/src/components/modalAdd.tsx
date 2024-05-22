@@ -3,10 +3,14 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { Input } from "@mui/material";
-import "../styles/modalAdd.css";
 import AddBoxIcon from "@mui/icons-material/AddBox";
-import { useState } from "react";
+
+import "../styles/modalAdd.css";
+
+import ModalProduct from "../modals/modalProduct";
+import ModalProductEntry from "../modals/modalProductEntry";
+import ModalProductOutput from "../modals/modalProductOutput";
+import ModalFunctionary from "../modals/modalFunctionary";
 
 const style = {
   position: "absolute" as "absolute",
@@ -23,17 +27,10 @@ const addCircle = {
   color: "#70B842",
 };
 
-function ModalAdd() {
+export default function ModalAdd() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [nome, setNome] = useState<string>("");
-  const [marca, setMarca] = useState<string>("");
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNome(event.target.value);
-    setMarca(event.target.value);
-  };
 
   return (
     <div>
@@ -48,20 +45,19 @@ function ModalAdd() {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box className="modal" sx={style}>
-          <h2>Cadastrar Produto</h2>
-          <Input
-            className="placeInput"
-            placeholder="Nome"
-            value={nome}
-            onChange={handleChange}
-          />
-          <Input
-            className="placeInput"
-            placeholder="Marca"
-            value={marca}
-            onChange={handleChange}
-          />
-          <Input className="placeInput" placeholder="Descrição" />
+          <span className="modalProduct all">
+            <ModalProduct />
+          </span>
+          <span className="modalProductEntry all">
+            <ModalProductEntry />
+          </span>
+          <span className="modalProductOutput all">
+            <ModalProductOutput />
+          </span>
+          <span className="modalFunctionary all">
+            <ModalFunctionary />
+          </span>
+
           <button className="add-btn">
             <AddBoxIcon style={{ color: "white" }} />
           </button>
@@ -70,5 +66,3 @@ function ModalAdd() {
     </div>
   );
 }
-
-export default 
