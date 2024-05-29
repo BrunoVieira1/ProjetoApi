@@ -1,0 +1,28 @@
+.modal {
+  text-align: center;
+  align-items: center;
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.placeInput {
+  margin-bottom: 20px;
+}
+Input::placeholder{
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.modal h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.add-btn {
+  background-color: #70b842;
+  padding: 4px;
+  border-radius: 4px;
+  width: 30%;
+}
