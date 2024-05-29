@@ -6,7 +6,7 @@ import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 
 const Private = ({ Item }: any) => {
-  const signed = 0;
+  const signed = 1;
 
   return signed > 0 ? <Item /> : <Signin />;
 };
