@@ -3,14 +3,12 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 
 import "../styles/modalAdd.css";
 
 import ModalProduct from "../modals/modalProduct";
 import ModalProductEntry from "../modals/modalProductEntry";
 import ModalProductOutput from "../modals/modalProductOutput";
-import ModalFunctionary from "../modals/modalFunctionary";
 
 const style = {
   position: "absolute" as "absolute",
@@ -54,13 +52,6 @@ export default function ModalAdd() {
           <span className="modalProductOutput all">
             <ModalProductOutput />
           </span>
-          <span className="modalFunctionary all">
-            <ModalFunctionary />
-          </span>
-
-          <button className="add-btn">
-            <AddBoxIcon style={{ color: "white" }} />
-          </button>
         </Box>
       </Modal>
     </div>

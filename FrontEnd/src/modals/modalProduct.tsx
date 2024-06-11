@@ -1,15 +1,33 @@
 import { useState } from "react";
 
 import { Input } from "@mui/material";
+import { Api } from "../services/api/axios-config";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+
+interface Product {
+  name: string;
+  brand: string;
+  description: string;
+}
 
 function ModalProduct() {
-  const [name, setName] = useState<string>("");
-  const [brand, setBrand] = useState<string>("");
-  const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
-  const handleChangeBrand = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBrand(event.target.value);
+  const [product, setProduct] = useState<Product>({
+    name: "",
+    brand: "",
+    description: "",
+  });
+
+  const insertProduct = () => {
+    try {
+      Api.post("/produtos", {
+        nome: product.name,
+        marca: product.brand,
+        descricao: product.description,
+      });
+      alert("cadastrado");
+    } catch (e) {
+      console.error("erro", e);
+    }
   };
 
   return (
@@ -18,16 +36,27 @@ function ModalProduct() {
       <Input
         className="placeInput"
         placeholder="Nome"
-        value={name}
-        onChange={handleChangeName}
+        value={product.name}
+        onChange={(e) => setProduct({ ...product, name: e.target.value })}
       />
       <Input
         className="placeInput"
         placeholder="Marca"
-        value={brand}
-        onChange={handleChangeBrand}
+        value={product.brand}
+        onChange={(e) => setProduct({ ...product, brand: e.target.value })}
       />
-      <Input className="placeInput" placeholder="Descrição" />
+      <Input
+        className="placeInput"
+        placeholder="Descrição"
+        value={product.description}
+        onChange={(e) =>
+          setProduct({ ...product, description: e.target.value })
+        }
+      />
+      <br></br>
+      <button className="add-btn" onClick={insertProduct}>
+        <AddBoxIcon style={{ color: "white" }} />
+      </button>
     </>
   );
 }

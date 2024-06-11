@@ -2,8 +2,25 @@ import "../styles/screens.css";
 import CloseScreen from "../button/closeScreen";
 import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
+import { Api } from "../services/api/axios-config";
+import { useEffect } from "react";
 
 function Product() {
+  async function getProduct() {
+    try {
+      setTimeout(async () => {
+        const data = await Api.get("/produtos");
+        console.log(data);
+        return data;
+      }, 1000);
+    } catch (e) {
+      console.error("erro", e);
+    }
+  }
+
+  useEffect(() => {
+    getProduct();
+  }, []);
   return (
     <>
       <div className="nav-content">

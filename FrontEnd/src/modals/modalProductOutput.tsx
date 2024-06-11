@@ -1,4 +1,5 @@
 import { Input } from "@mui/material";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 function ModalProductOutput() {
   return (
@@ -8,6 +9,9 @@ function ModalProductOutput() {
       <Input className="placeInput" placeholder="quantidade" />
       <Input className="placeInput" placeholder="valor unitário" />
       <Input className="placeInput" placeholder="data de saída" />
+      <button className="add-btn">
+        <AddBoxIcon style={{ color: "white" }} />
+      </button>
     </>
   );
 }

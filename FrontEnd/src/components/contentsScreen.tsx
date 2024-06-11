@@ -1,7 +1,6 @@
 import Product from "../screens/product";
 import ProductEntry from "../screens/productEntry";
 import ProductOutput from "../screens/productOutput";
-import Functionary from "../screens/functionary";
 
 function ContentScreen() {
   return (
@@ -23,9 +22,6 @@ function ContentScreen() {
       </div>
       <div className="productOutput all">
         <ProductOutput />
-      </div>
-      <div className="functionary all">
-        <Functionary />
       </div>
     </>
   );

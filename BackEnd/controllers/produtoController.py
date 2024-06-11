@@ -7,9 +7,7 @@ def produto_controller():
     try:
       data = request.get_json()
       print(data)
-      product = Produto(data['nome'])
-      product = Produto(data['marca'])
-      product = Produto(data['descricao'])
+      product = Produto(data['nome'], data['marca'], data['descricao']) 
       db.session.add(product)
       db.session.commit()
       return 'Produto Criado'

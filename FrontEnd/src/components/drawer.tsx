@@ -1,7 +1,6 @@
 import HomeIcon from "@mui/icons-material/Home";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import WestIcon from "@mui/icons-material/West";
-import BadgeIcon from "@mui/icons-material/Badge";
 import { renderDisplay } from "./showScreens";
 function Drawer() {
   return (
@@ -22,10 +21,6 @@ function Drawer() {
         <button onClick={() => renderDisplay(4)} className="btn-drawer">
           <WestIcon id="WestIcon-l" />
           <span className="name-btn">Saida de Produtos</span>
-        </button>
-        <button onClick={() => renderDisplay(5)} className="btn-drawer">
-          <BadgeIcon />
-          <span className="name-btn">Funcionários</span>
         </button>
       </div>
     </>
