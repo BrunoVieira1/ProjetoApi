@@ -1,29 +1,34 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { auth } from "../services/api/auth/AuthService";
 
 import Home from "../pages/home";
 import Signin from "../pages/signin";
+import Navigation from "../components/navigation";
 
-export function handleCheckLogin(email: string, password: string) {
-  auth(email, password);
+var response = 0;
+export async function handleCheckLogin(email: string, password: string) {
+  response = await auth(email, password);
+  console.log("Response do handlwlogin", response);
+  return response === 1
+    ? ((window.location.href = "/auth"), localStorage.setItem("isLogged", "1"))
+    : (window.location.href = "/");
 }
 
-const Private = ({ Item }: any) => {
-  const signed = 1;
-
-  return signed > 0 ? <Item /> : <Signin />;
-};
-
 const RoutesApp = () => {
+  var isLogged = localStorage.getItem("isLogged");
   return (
     <BrowserRouter>
       <Fragment>
         <Routes>
-          <Route path="/home" element={<Private Item={Home} />} />
+          <Route
+            path="/home"
+            element={isLogged === "1" ? <Navigation /> : <Signin />}
+          />
           <Route path="/" element={<Signin />} />
-          <Route path="*" element={<Signin />} />
+          <Route path="/auth" element={<Home />} />
+          <Route path="/signin" element={<Signin />} />
         </Routes>
       </Fragment>
     </BrowserRouter>

@@ -11,9 +11,13 @@ export default function FadeMenu() {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  function handleClose(n: number) {
+    if (n == 1) {
+      localStorage.setItem("isLogged", "0");
+      window.location.href = "/";
+    }
     setAnchorEl(null);
-  };
+  }
 
   return (
     <div>
@@ -39,9 +43,9 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={handleClose}>Perfil</MenuItem>
-        <MenuItem onClick={handleClose}>Minha conta</MenuItem>
-        <MenuItem onClick={handleClose}>Sair</MenuItem>
+        <MenuItem onClick={() => handleClose(0)}>Perfil</MenuItem>
+        <MenuItem onClick={() => handleClose(0)}>Minha conta</MenuItem>
+        <MenuItem onClick={() => handleClose(1)}>Sair</MenuItem>
       </Menu>
     </div>
   );

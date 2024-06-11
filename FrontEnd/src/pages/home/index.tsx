@@ -1,6 +1,8 @@
-import React from "react";
-import Navigation from "../../components/navigation";
-
 export default function Home() {
-  return <Navigation />;
+  var isLogged = localStorage.getItem("isLogged");
+  if (isLogged == "1") {
+    return (window.location.href = "/home");
+  } else {
+    return (window.location.href = "/signin");
+  }
 }

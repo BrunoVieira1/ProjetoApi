@@ -15,11 +15,10 @@ export const auth = async (cpf: string, senha: string) => {
 
     if (data.data == null) {
       console.log("nenhum usuario encontrado");
-      return data;
+      return 0;
     } else {
       return 1;
     }
-    return data;
   } catch (error) {
     console.error(error);
   }
