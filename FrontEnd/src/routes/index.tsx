@@ -1,15 +1,17 @@
 import { Fragment } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { auth } from "../services/api/auth/AuthService";
+
 import Home from "../pages/home";
 import Signin from "../pages/signin";
 
 export function handleCheckLogin(email: string, password: string) {
-  console.log(email, password);
+  auth(email, password);
 }
 
 const Private = ({ Item }: any) => {
-  const signed = 0;
+  const signed = 1;
 
   return signed > 0 ? <Item /> : <Signin />;
 };

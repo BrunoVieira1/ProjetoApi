@@ -1,30 +1,20 @@
 import { Api } from "../axios-config";
 
-interface IAuth {
-  accessToken: string;
-}
-
-const auth = async (
-  email: string,
-  password: string
-): Promise<IAuth | Error> => {
+export const auth = async (cpf: string, senha: string) => {
   try {
-    const { data } = await Api.post("/auth", {
-      data: { email, password },
+    const data = await Api.post("/auth", {
+      data: {
+        cpf: cpf,
+        senha: senha,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    if (data) {
-      return data;
-    }
+    console.log(data);
 
-    return new Error("Erro no login.");
+    return data;
   } catch (error) {
     console.error(error);
-    return new Error(
-      (error as { message: string }).message || "Erro no login."
-    );
   }
-};
-
-export const AuthService = {
-  auth,
 };

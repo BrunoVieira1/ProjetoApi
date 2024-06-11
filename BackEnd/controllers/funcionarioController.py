@@ -16,6 +16,7 @@ def funcionario_controller():
   elif request.method == 'GET':
     try:
       data = Funcionario.query.all()
+      data = {'funcionarios' : [funcionario.to_dict() for funcionario in data]}
       return data
     except Exception as e:
       return 'funcionarios nao foram buscados'

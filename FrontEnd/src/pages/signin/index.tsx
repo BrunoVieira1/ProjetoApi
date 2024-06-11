@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import background from "../../assets/logo.jpg";
-import handleCheckLogin from "../../routes/index";
+import { handleCheckLogin } from "../../routes/index";
 
 function Copyright(props: any) {
   return (
@@ -40,6 +40,9 @@ export default function SignInSide() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const cpf = data.get("email") as string;
+    const password = data.get("password") as string;
+    handleCheckLogin(cpf, password);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
