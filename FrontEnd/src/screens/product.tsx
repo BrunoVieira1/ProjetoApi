@@ -3,15 +3,26 @@ import CloseScreen from "../button/closeScreen";
 import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
 import { Api } from "../services/api/axios-config";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+interface Product {
+  id: number;
+  nome: string;
+  marca: string;
+  descricao: string;
+}
 
 function Product() {
   async function getProduct() {
     try {
       setTimeout(async () => {
-        const data = await Api.get("/produtos");
-        console.log(data);
-        return data;
+        const productData = await Api.get("/produtos", {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        });
+        setProducts(productData.data.produtos);
+        console.log(productData.data.produtos);
       }, 1000);
     } catch (e) {
       console.error("erro", e);
@@ -21,6 +32,7 @@ function Product() {
   useEffect(() => {
     getProduct();
   }, []);
+  const [products, setProducts] = useState<Product[]>([]);
   return (
     <>
       <div className="nav-content">
@@ -50,12 +62,16 @@ function Product() {
           <span className="product">MARCA</span>
           <span className="product">DESCRIÇÃO</span>
         </div>
-        <div className="product-span ">
-          <span className="product pro">1</span>
-          <span className="product pro">ÁGUA</span>
-          <span className="product pro">CRYSTAL</span>
-          <span className="product pro">SEM GÁS</span>
-        </div>
+        {products.map((product) => {
+          return (
+            <div className="product-span" key={product.id}>
+              <span className="product pro">{product.id}</span>
+              <span className="product pro">{product.nome}</span>
+              <span className="product pro">{product.marca}</span>
+              <span className="product pro">{product.descricao}</span>
+            </div>
+          );
+        })}
       </div>
     </>
   );

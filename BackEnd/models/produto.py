@@ -2,9 +2,10 @@ from database.db import db
 
 class Produto(db.Model):
   def to_dict(self):
-
-    return{
+    return {
       'id': self.id,
+      'nome': self.nome,
+      'marca': self.marca,
       'descricao': self.descricao
     }
   
@@ -13,7 +14,7 @@ class Produto(db.Model):
   marca = db.Column(db.String(100))
   descricao = db.Column(db.String(100))
 
-  def __init__(self,nome, marca, descricao):
+  def __init__(self, nome, marca, descricao):
     self.nome = nome
     self.marca = marca
     self.descricao = descricao

@@ -16,6 +16,7 @@ def produto_controller():
   elif request.method == 'GET':
     try:
       data = Produto.query.all()
+      data = {'produtos' : [produto.to_dict() for produto in data]}
       return data
     except Exception as e:
       return 'produtos nao foram buscados'

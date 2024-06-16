@@ -7,8 +7,8 @@ def saida_produto_controller():
     try:
       data = request.get_json()
       print(data)
-      productEntry = Saida_produto(data['id_produto'], data['qtde'], data['valor_unitario'], data['data_saida'])
-      db.session.add(productEntry)
+      productOut = Saida_produto(data['id_produto'], data['qtde'], data['valor_unitario'], data['data_saida'])
+      db.session.add(productOut)
       db.session.commit()
       return 'saida do produto Criada'
     except Exception as e:
@@ -16,6 +16,7 @@ def saida_produto_controller():
   elif request.method == 'GET':
     try:
       data = Saida_produto.query.all()
+      data = {'produtosOut' : [produtoOut.to_dict() for produtoOut in data]}
       return data
     except Exception as e:
       return 'saidads de produtos nao foram buscadas'

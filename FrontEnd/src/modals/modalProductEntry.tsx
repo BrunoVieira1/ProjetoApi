@@ -2,12 +2,13 @@ import { Input } from "@mui/material";
 import { useState } from "react";
 import { Api } from "../services/api/axios-config";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import moment from "moment";
 
 interface ProductEntry {
   idProduct: number;
   quantity: number;
   unitaryValue: number;
-  entryDate: Date;
+  entryDate: string;
 }
 
 function ModalProductEntry() {
@@ -15,14 +16,14 @@ function ModalProductEntry() {
     idProduct: 0,
     quantity: 0,
     unitaryValue: 0,
-    entryDate: new Date(),
+    entryDate: moment().format("YYYY-MM-DD"),
   });
 
   const productEntry = () => {
     try {
       Api.post("/entradaProdutos", {
         id_produto: entry.idProduct,
-        quantity: entry.quantity,
+        qtde: entry.quantity,
         valor_unitario: entry.unitaryValue,
         data_entrada: entry.entryDate,
       });
@@ -39,16 +40,22 @@ function ModalProductEntry() {
         className="placeInput"
         placeholder="id - produto"
         value={entry.idProduct}
+        type="number"
+        onChange={(e) => setEntry({ ...entry, idProduct: e.target.value })}
       />
       <Input
         className="placeInput"
         placeholder="quantidade"
         value={entry.quantity}
+        type="number"
+        onChange={(e) => setEntry({ ...entry, quantity: e.target.value })}
       />
       <Input
         className="placeInput"
         placeholder="valor unitário"
         value={entry.unitaryValue}
+        type="number"
+        onChange={(e) => setEntry({ ...entry, unitaryValue: e.target.value })}
       />
       <Input value={entry.entryDate} disabled />
 
