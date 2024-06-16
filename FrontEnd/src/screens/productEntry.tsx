@@ -13,7 +13,7 @@ interface Entry {
 }
 
 function ProductEntry() {
-  async function getProduct() {
+  async function getProductEntry() {
     try {
       setTimeout(async () => {
         const entryData = await Api.get("/entradaProdutos", {
@@ -29,7 +29,7 @@ function ProductEntry() {
     }
   }
   useEffect(() => {
-    getProduct();
+    getProductEntry();
   }, []);
   const [entry, setEntry] = useState<Entry[]>([]);
   return (
