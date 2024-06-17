@@ -1,7 +1,7 @@
 import "./contentsScreen";
 
 export function renderDisplay(screenClass: number) {
-  const classes = ["teste", "productScreen", "productEntry", "productOutput"];
+  const classes = ["home", "productScreen", "productEntry", "productOutput"];
   const pegarClasse = classes[screenClass - 1];
 
   // Primeiro, ocultar todos os elementos
