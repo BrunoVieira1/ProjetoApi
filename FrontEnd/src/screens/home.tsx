@@ -13,7 +13,7 @@ interface Entry {
 
 function get() {
   console.log("teste");
-  /* async function getProductEntry() {
+  async function getProductEntry() {
     try {
       setTimeout(async () => {
         const entryData = await Api.get("/entradaProdutos", {
@@ -31,49 +31,50 @@ function get() {
   useEffect(() => {
     getProductEntry();
   }, []);
-  const [entry, setEntry] = useState<Entry[]>([]); */
-}
+  const [entry, setEntry] = useState<Entry[]>([]);
 
-class Home extends Component {
-  constructor(props: any) {
-    super(props);
+  class Home extends Component {
+    constructor(props: any) {
+      super(props);
 
-    this.state = {
-      options: {
-        chart: {
-          id: "basic-bar",
+      this.state = {
+        options: {
+          chart: {
+            id: "basic-bar",
+          },
+          xaxis: {
+            categories: entry.map((pe) => {
+              [pe.data_entrada];
+            }),
+          },
         },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-        },
-      },
-      series: [
-        {
-          name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91],
-        },
-      ],
-    };
-  }
+        series: [
+          {
+            name: "series-1",
+            data: [30, 40, 45, 50, 49, 60, 70, 91],
+          },
+        ],
+      };
+    }
 
-  render() {
-    return (
-      <div className="app">
-        <div className="row">
-          <div className="mixed-chart">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="line"
-              width="500"
-            />
+    render() {
+      return (
+        <div className="app">
+          <div className="row">
+            <div className="mixed-chart">
+              <Chart
+                options={this.state.options}
+                series={this.state.series}
+                type="line"
+                width="500"
+              />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
+  return <Home />;
 }
 
-get();
-
-export default Home;
+export default get;
