@@ -36,20 +36,37 @@
   align-content: center;
 }
 
+.button {
+  border: none;
+  color: red;
+  background-color: #e3e3e3;
+  font-weight: 600;
+}
+
+.delete {
+  background-color: #1c4364;
+  padding: 4px;
+  border-radius: 50%;
+  width: 30px;
+}
+
 .flex {
   align-items: center;
   gap: 20px;
-}
-
-.teste {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
 }
 
 .all {
   display: none;
   margin: 0.5px 0 0 3px;
   flex-grow: 1;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  font-size: 48px;
+  font-weight: 600;
+  color: #1c4364;
 }

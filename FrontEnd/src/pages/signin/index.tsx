@@ -96,7 +96,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Endereço de email"
+                label="CPF"
                 name="email"
                 autoComplete="email"
                 autoFocus

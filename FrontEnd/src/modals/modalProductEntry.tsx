@@ -58,6 +58,8 @@ function ModalProductEntry() {
         onChange={(e) => setEntry({ ...entry, unitaryValue: e.target.value })}
       />
       <Input value={entry.entryDate} disabled />
+      <br></br>
+      <br></br>
 
       <button className="add-btn" onClick={productEntry}>
         <AddBoxIcon style={{ color: "white" }} />

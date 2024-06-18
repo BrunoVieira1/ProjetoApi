@@ -57,6 +57,8 @@ function ModalProductOutput() {
         onChange={(e) => setOutput({ ...output, unitaryValue: e.target.value })}
       />
       <Input className="placeInput" value={output.outputDate} disabled />
+      <br></br>
+      <br></br>
       <button className="add-btn" onClick={productOutput}>
         <AddBoxIcon style={{ color: "white" }} />
       </button>

@@ -28,6 +28,13 @@ function ProductEntry() {
       console.error("erro", e);
     }
   }
+  function deleteProduct(id: number) {
+    Api.delete("/entradaProdutos", {
+      data: {
+        id: id,
+      },
+    });
+  }
   useEffect(() => {
     getProductEntry();
   }, []);
@@ -36,15 +43,6 @@ function ProductEntry() {
     <>
       <div className="nav-content">
         <div className="flex ">
-          <input
-            type="text"
-            placeholder="Buscar por nome:"
-            style={{
-              color: "black",
-              textAlign: "center",
-              textTransform: "uppercase",
-            }}
-          />
           <h2>ENTRADA DE PRODUTOS </h2>
           <button onClick={() => ModalFunction(2)} className="btn-add">
             <ModalAdd />
@@ -60,6 +58,7 @@ function ProductEntry() {
           <span className="product">QUANTIDADE</span>
           <span className="product">VALOR UNITÁRIO</span>
           <span className="product">DATA DE ENTRADA</span>
+          <span className="product button"></span>
         </div>
         {entry.map((product) => {
           return (
@@ -69,6 +68,14 @@ function ProductEntry() {
               <span className="product pro">{product.qtde}</span>
               <span className="product pro">{product.valor_unitario}</span>
               <span className="product pro">{product.data_entrada}</span>
+              <span className="product pro button">
+                <button
+                  className="delete"
+                  onClick={() => deleteProduct(product.id)}
+                >
+                  X
+                </button>
+              </span>
             </div>
           );
         })}

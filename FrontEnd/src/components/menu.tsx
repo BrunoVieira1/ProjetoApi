@@ -43,8 +43,6 @@ export default function FadeMenu() {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <MenuItem onClick={() => handleClose(0)}>Perfil</MenuItem>
-        <MenuItem onClick={() => handleClose(0)}>Minha conta</MenuItem>
         <MenuItem onClick={() => handleClose(1)}>Sair</MenuItem>
       </Menu>
     </div>

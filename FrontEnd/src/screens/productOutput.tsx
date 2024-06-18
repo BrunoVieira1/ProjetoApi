@@ -29,6 +29,13 @@ function ProductOutput() {
       console.error("erro", e);
     }
   }
+  function deleteProduct(id: number) {
+    Api.delete("/saidaProdutos", {
+      data: {
+        id: id,
+      },
+    });
+  }
   useEffect(() => {
     getProductOutput();
   }, []);
@@ -37,15 +44,6 @@ function ProductOutput() {
     <>
       <div className="nav-content">
         <div className="flex ">
-          <input
-            type="text"
-            placeholder="Buscar por nome:"
-            style={{
-              color: "black",
-              textAlign: "center",
-              textTransform: "uppercase",
-            }}
-          />
           <h2>SAÍDA DE PRODUTOS </h2>
           <button onClick={() => ModalFunction(3)} className="btn-add">
             <ModalAdd />
@@ -61,6 +59,7 @@ function ProductOutput() {
           <span className="product">QUANTIDADE</span>
           <span className="product">VALOR UNITÁRIO</span>
           <span className="product">DATA DE SAÍDA</span>
+          <span className="product button"></span>
         </div>
         {output.map((product) => {
           return (
@@ -70,6 +69,14 @@ function ProductOutput() {
               <span className="product pro">{product.qtde}</span>
               <span className="product pro">{product.valor_unitario}</span>
               <span className="product pro">{product.data_saida}</span>
+              <span className="product pro button">
+                <button
+                  className="delete"
+                  onClick={() => deleteProduct(product.id)}
+                >
+                  X
+                </button>
+              </span>
             </div>
           );
         })}
