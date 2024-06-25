@@ -7,7 +7,7 @@ def produto_controller():
     try:
       data = request.get_json()
       print(data)
-      product = Produto(data['nome'], data['marca'], data['descricao']) 
+      product = Produto(data['nome'], data['marca'], data['descricao'], data['qtde']) 
       db.session.add(product)
       db.session.commit()
       return 'Produto Criado'
@@ -30,6 +30,7 @@ def produto_controller():
       put_produto.nome = data.get('nome', put_produto.nome)
       put_produto.marca = data.get('marca', put_produto.marca)
       put_produto.descricao = data.get('descricao', put_produto.descricao)
+      put_produto.qtde = data.get('qtde', put_produto.qtde)
       db.session.commit()
       return 'cliente atualizado com sucesso', 200
     except Exception as e:

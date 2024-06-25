@@ -1,6 +1,7 @@
 from flask import request
 from database.db import db
 from models.saida_produto import Saida_produto
+from models.produto import Produto
 
 def saida_produto_controller():
   if request.method == 'POST':
@@ -8,11 +9,24 @@ def saida_produto_controller():
       data = request.get_json()
       print(data)
       productOut = Saida_produto(data['id_produto'], data['qtde'], data['valor_unitario'], data['data_saida'])
-      db.session.add(productOut)
-      db.session.commit()
+      product = Produto.query.filter_by(id=data['id_produto'])
+      productdata = {'produtos' : [produto.to_dict() for produto in product]}
+      data2 = [produto['qtde'] for produto in productdata['produtos']]
+      data2 = data2[0]
+      data3 = int(data['qtde'])
+      if data2 < data3:
+        return "erro"
+      else:
+        quantity = data2 - data3
+        db.session.add(productOut)
+        db.session.commit()
+        put1 = Produto.query.get(data['id_produto'])
+        put1.qtde = quantity
+        db.session.commit()
+        return "saida criada"
       return 'saida do produto Criada'
     except Exception as e:
-      return 'saida do produto nao realizada'
+      return {'error': 'erro ao atualizar Entrada de Produtos. erro{}'.format(e)}
   elif request.method == 'GET':
     try:
       data = Saida_produto.query.all()

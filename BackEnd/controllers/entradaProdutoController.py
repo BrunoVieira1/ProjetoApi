@@ -1,6 +1,7 @@
 from flask import request
 from database.db import db
 from models.entrada_produto import Entrada_produto
+from models.produto import Produto
 
 def entrada_produto_controller():
   if request.method == 'POST':
@@ -8,7 +9,16 @@ def entrada_produto_controller():
       data = request.get_json()
       print(data)
       productEntry = Entrada_produto(data['id_produto'], data['qtde'], data['valor_unitario'], data['data_entrada'])
+      product = Produto.query.filter_by(id=data['id_produto'])
+      productdata = {'produtos' : [produto.to_dict() for produto in product]}
+      data2 = [produto['qtde'] for produto in productdata['produtos']]
+      data2 = data2[0]
+      data3 = int(data['qtde'])
       db.session.add(productEntry)
+      db.session.commit()
+      quantity = data2 + data3
+      put1 = Produto.query.get(data['id_produto'])
+      put1.qtde = quantity
       db.session.commit()
       return 'Entrada do produto Criada'
     except Exception as e:

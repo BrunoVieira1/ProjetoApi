@@ -3,6 +3,7 @@ import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
 import { Api } from "../services/api/axios-config";
 import { useEffect, useState } from "react";
+import modalUpdateEntry from "../modals/modalUpdateEntry";
 
 interface Entry {
   id: number;
@@ -13,6 +14,15 @@ interface Entry {
 }
 
 function ProductEntry() {
+  function handleOpen(
+    id: number,
+    id_produto: number,
+    qtde: number,
+    valor_unitario: number,
+    data_entrada: string
+  ) {
+    modalUpdateEntry(id, id_produto, qtde, valor_unitario, data_entrada);
+  }
   async function getProductEntry() {
     try {
       setTimeout(async () => {
@@ -35,10 +45,10 @@ function ProductEntry() {
       },
     });
   }
+  const [entry, setEntry] = useState<Entry[]>([]);
   useEffect(() => {
     getProductEntry();
-  }, []);
-  const [entry, setEntry] = useState<Entry[]>([]);
+  }, [entry]);
   return (
     <>
       <div className="nav-content">
@@ -59,6 +69,7 @@ function ProductEntry() {
           <span className="product">VALOR UNITÁRIO</span>
           <span className="product">DATA DE ENTRADA</span>
           <span className="product button"></span>
+          <span className="product button"></span>
         </div>
         {entry.map((product) => {
           return (
@@ -74,6 +85,22 @@ function ProductEntry() {
                   onClick={() => deleteProduct(product.id)}
                 >
                   X
+                </button>
+              </span>
+              <span className="product pro button">
+                <button
+                  className="delete"
+                  onClick={() =>
+                    handleOpen(
+                      product.id,
+                      product.id_produto,
+                      product.qtde,
+                      product.valor_unitario,
+                      product.data_entrada
+                    )
+                  }
+                >
+                  U
                 </button>
               </span>
             </div>

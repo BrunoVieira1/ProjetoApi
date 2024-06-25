@@ -21,13 +21,15 @@ function ModalProductOutput() {
 
   const productOutput = () => {
     try {
-      Api.post("/saidaProdutos", {
+      const post = Api.post("/saidaProdutos", {
         id_produto: output.idProduct,
         qtde: output.quantity,
         valor_unitario: output.unitaryValue,
         data_saida: output.outputDate,
       });
-      alert("cadastrado");
+      console.log(post);
+
+      return post;
     } catch (e) {
       console.error("erro", e);
     }

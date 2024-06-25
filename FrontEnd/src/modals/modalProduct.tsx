@@ -8,6 +8,7 @@ interface Product {
   name: string;
   brand: string;
   description: string;
+  quantity: string;
 }
 
 function ModalProduct() {
@@ -15,6 +16,7 @@ function ModalProduct() {
     name: "",
     brand: "",
     description: "",
+    quantity: "",
   });
 
   const insertProduct = () => {
@@ -23,6 +25,7 @@ function ModalProduct() {
         nome: product.name,
         marca: product.brand,
         descricao: product.description,
+        qtde: product.quantity,
       });
       alert("cadastrado");
     } catch (e) {
@@ -52,6 +55,13 @@ function ModalProduct() {
         onChange={(e) =>
           setProduct({ ...product, description: e.target.value })
         }
+      />
+      <Input
+        className="placeInput"
+        placeholder="Quantidade"
+        value={product.quantity}
+        type="number"
+        onChange={(e) => setProduct({ ...product, quantity: e.target.value })}
       />
       <br></br>
       <button className="add-btn" onClick={insertProduct}>

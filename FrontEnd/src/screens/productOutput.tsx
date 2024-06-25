@@ -4,6 +4,7 @@ import CloseScreen from "../button/closeScreen";
 import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
 import { Api } from "../services/api/axios-config";
+import modalUpdateOutput from "../modals/modalUpdateOutput";
 
 interface Output {
   id: number;
@@ -14,6 +15,15 @@ interface Output {
 }
 
 function ProductOutput() {
+  function handleOpen(
+    id: number,
+    id_produto: number,
+    qtde: number,
+    valor_unitario: number,
+    data_saida: string
+  ) {
+    modalUpdateOutput(id, id_produto, qtde, valor_unitario, data_saida);
+  }
   async function getProductOutput() {
     try {
       setTimeout(async () => {
@@ -23,7 +33,6 @@ function ProductOutput() {
           },
         });
         setOutput(outputData.data.produtosOut);
-        console.log(outputData.data.produtosOut);
       }, 1000);
     } catch (e) {
       console.error("erro", e);
@@ -36,10 +45,10 @@ function ProductOutput() {
       },
     });
   }
+  const [output, setOutput] = useState<Output[]>([]);
   useEffect(() => {
     getProductOutput();
-  }, []);
-  const [output, setOutput] = useState<Output[]>([]);
+  }, [output]);
   return (
     <>
       <div className="nav-content">
@@ -60,6 +69,7 @@ function ProductOutput() {
           <span className="product">VALOR UNITÁRIO</span>
           <span className="product">DATA DE SAÍDA</span>
           <span className="product button"></span>
+          <span className="product button"></span>
         </div>
         {output.map((product) => {
           return (
@@ -75,6 +85,22 @@ function ProductOutput() {
                   onClick={() => deleteProduct(product.id)}
                 >
                   X
+                </button>
+              </span>
+              <span className="product pro button">
+                <button
+                  className="delete"
+                  onClick={() =>
+                    handleOpen(
+                      product.id,
+                      product.id_produto,
+                      product.qtde,
+                      product.valor_unitario,
+                      product.data_saida
+                    )
+                  }
+                >
+                  U
                 </button>
               </span>
             </div>

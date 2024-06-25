@@ -4,15 +4,27 @@ import ModalAdd from "../components/modalAdd";
 import { ModalFunction } from "../components/modalFunction";
 import { Api } from "../services/api/axios-config";
 import { useEffect, useState } from "react";
+import React from "react";
+import modalteste from "../modals/modalUpdateProduct";
 
 interface Product {
   id: number;
   nome: string;
   marca: string;
   descricao: string;
+  qtde: string;
 }
 
 function Product() {
+  function handleOpen(
+    id: number,
+    nome: string,
+    marca: string,
+    descricao: string,
+    qtde: string
+  ) {
+    modalteste(id, nome, marca, descricao, qtde);
+  }
   async function getProduct() {
     try {
       setTimeout(async () => {
@@ -36,10 +48,10 @@ function Product() {
     });
   }
 
+  const [products, setProducts] = useState<Product[]>([]);
   useEffect(() => {
     getProduct();
-  }, []);
-  const [products, setProducts] = useState<Product[]>([]);
+  }, [products]);
   return (
     <>
       <div className="nav-content">
@@ -59,6 +71,8 @@ function Product() {
           <span className="product">NOME</span>
           <span className="product">MARCA</span>
           <span className="product">DESCRIÇÃO</span>
+          <span className="product">QUANTIDADE</span>
+          <span className="product button"></span>
           <span className="product button"></span>
         </div>
         {products.map((product) => {
@@ -68,12 +82,37 @@ function Product() {
               <span className="product pro">{product.nome}</span>
               <span className="product pro">{product.marca}</span>
               <span className="product pro">{product.descricao}</span>
+              <span className="product pro">{product.qtde}</span>
               <span className="product pro button">
                 <button
                   className="delete"
                   onClick={() => deleteProduct(product.id)}
                 >
                   X
+                </button>
+              </span>
+              <span className="product pro button">
+                <button
+                  className="delete"
+                  onClick={
+                    () =>
+                      handleOpen(
+                        product.id,
+                        product.nome,
+                        product.marca,
+                        product.descricao,
+                        product.qtde
+                      )
+                    /* ModalUpdateProduct(
+                      product.id,
+                      product.nome,
+                      product.marca,
+                      product.descricao,
+                      product.qtde
+                    ) */
+                  }
+                >
+                  U
                 </button>
               </span>
             </div>
